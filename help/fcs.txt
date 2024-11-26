@@ -1,0 +1,50 @@
+##for another time
+##https://jchellmuth.com/posts/FACS-with-R/
+
+----
+##let's start with this one
+###https://github.com/hally166/R_flowcytometry_course
+
+
+install.packages("ggplot2")
+
+
+install.packages("BiocManager")
+
+#upgrade to  BiocManager::install(version = "3.19"), need to upgrade to R 4.4
+#https://cran.r-project.org/bin/linux/ubuntu/fullREADME.html
+
+BiocManager::install(version = "3.19")
+BiocManager::install("flowCore")
+BiocManager::install("flowViz")
+BiocManager::install("flowAI")
+
+library(ggplot2)
+library(flowCore)
+library(flowViz)
+library(flowAI)
+
+#file:///home/pt/app/rstudio/13-09-24_reference_3394_A.fcs
+myfile <- "~/app/rstudio/13-09-24_reference_3394_A.fcs"
+fcsfile <- read.FCS(myfile,emptyValue = F)
+
+fcsfile
+exprs(fcsfile)[1:10,]
+#       Event Time  FSC-A   SSC-A  BL1-A  BL3-A  FSC-H  SSC-H  BL1-H  BL3-H FSC-W SSC-W BL1-W BL3-W
+# [1,]     1   22 287762  558395 196066  64875 247590 455184 167625  58306    80    80    68    35
+
+summary(fcsfile)
+str(keyword(fcsfile))
+summary(fcsfile[,5:6])
+
+plot(fcsfile, c("BL3-A", "BL1-A"))
+plot(fcsfile[,6:5])
+
+sudo apt install libxml2-dev
+BiocManager::install("ggcyto")
+#crash, BiocManager::install("ggcyto",lib="~/app/rstudio/lib",force=T)
+
+
+
+###export to eps
+install.packages("extrafont")
