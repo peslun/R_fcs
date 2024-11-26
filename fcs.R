@@ -1,3 +1,15 @@
+#install ----
+install.packages("ggplot2")
+install.packages("BiocManager")
+BiocManager::install("flowCore")
+BiocManager::install("flowViz")
+BiocManager::install("flowAI")
+BiocManager::install("ggcyto")
+
+library(ggplot2)
+library(flowCore)
+library(flowViz)
+library(flowAI)
 
 #load libraries ----
 library(extrafont)
